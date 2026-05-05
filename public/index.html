@@ -6,17 +6,18 @@
     <title>Subhadip Samanta | Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Fonts: Space Grotesk for Headings (bold/techy), Inter for body (clean/readable) -->
+    <!-- Fonts: Space Grotesk for Headings, Inter for body -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <style>
       body {
         font-family: "Inter", sans-serif;
-        background-color: #fdfdfc; /* Off-white, easier on eyes than pure white */
-        color: #0f172a;
+        background-color: #faf9f6; /* Premium off-white/paper color */
+        color: #000000;
+        overflow-x: hidden;
       }
 
       h1,
@@ -26,107 +27,132 @@
         font-family: "Space Grotesk", sans-serif;
       }
 
-      /* Neo-Brutalist Hard Shadows */
+      /* Enhanced Neo-Brutalist Shadows */
       .hard-shadow {
-        border: 3px solid #0f172a;
-        box-shadow: 6px 6px 0px 0px #0f172a;
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0px 0px #000000;
         transition: all 0.2s ease-in-out;
       }
       .hard-shadow:hover {
-        transform: translate(2px, 2px);
-        box-shadow: 4px 4px 0px 0px #0f172a;
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0px 0px #000000;
       }
       .hard-shadow:active {
         transform: translate(6px, 6px);
-        box-shadow: 0px 0px 0px 0px #0f172a;
+        box-shadow: 0px 0px 0px 0px #000000;
       }
 
-      /* Solid Grid Background */
+      /* Subtle Grid Background */
       .grid-bg {
-        background-size: 40px 40px;
+        background-size: 32px 32px;
         background-image:
-          linear-gradient(to right, #e2e8f0 1px, transparent 1px),
-          linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+          linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      }
+
+      /* Spinning Animation for Accents */
+      @keyframes spin-slow {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .spin-slow {
+        animation: spin-slow 8s linear infinite;
       }
     </style>
   </head>
   <body
-    class="selection:bg-blue-600 selection:text-white border-t-8 border-blue-600 min-h-screen flex flex-col grid-bg"
+    class="selection:bg-[#FF3366] selection:text-white border-t-8 border-[#FF3366] min-h-screen flex flex-col grid-bg"
   >
     <!-- Navbar -->
     <header
-      class="p-6 md:p-8 flex justify-between items-center max-w-6xl mx-auto w-full"
+      class="p-6 md:p-8 flex justify-between items-center max-w-7xl mx-auto w-full z-10"
     >
-      <div class="display-font text-2xl font-bold tracking-tight">
-        SUBHADIP.
+      <div
+        class="display-font text-3xl font-extrabold tracking-tighter flex items-center gap-2"
+      >
+        SUBHADIP<span class="text-[#FF3366]">.</span>
       </div>
-      <nav class="hidden md:flex gap-8 font-medium">
+      <nav
+        class="hidden md:flex gap-8 font-bold text-sm uppercase tracking-widest"
+      >
         <a
           href="#about"
-          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
+          class="hover:text-[#FF3366] transition-colors decoration-2 underline-offset-4 hover:underline"
           >About</a
         >
         <a
           href="#skills"
-          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
+          class="hover:text-[#FF3366] transition-colors decoration-2 underline-offset-4 hover:underline"
           >Skills</a
         >
         <a
           href="#projects"
-          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
+          class="hover:text-[#FF3366] transition-colors decoration-2 underline-offset-4 hover:underline"
           >Work</a
         >
       </nav>
       <a
         href="mailto:noastedlife@gmail.com"
-        class="hidden md:inline-block hard-shadow bg-blue-600 text-white px-6 py-2 font-bold display-font text-sm uppercase tracking-wider"
-        >Let's Talk</a
+        class="hidden md:inline-block hard-shadow bg-[#FF3366] text-white px-6 py-2.5 font-bold display-font text-sm uppercase tracking-widest"
       >
+        Let's Talk
+      </a>
     </header>
 
     <!-- Hero Section -->
     <main
-      class="flex-grow flex items-center justify-center px-6 md:px-8 py-12 md:py-24"
+      class="flex-grow flex items-center justify-center px-6 md:px-8 py-12 md:py-20 relative z-0"
     >
+      <!-- Decorative Rotating Star -->
+      <div
+        class="absolute top-10 right-20 text-[#FF3366] text-8xl opacity-20 spin-slow hidden md:block"
+      >
+        ✺
+      </div>
+
       <div
         class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
       >
         <!-- Content -->
-        <div class="order-2 md:order-1">
+        <div class="order-2 md:order-1 relative">
           <div
-            class="inline-block border-2 border-black bg-yellow-300 px-3 py-1 font-bold text-xs uppercase tracking-widest mb-6 display-font"
+            class="inline-block border-2 border-black bg-[#BEF264] px-4 py-1.5 font-bold text-xs uppercase tracking-widest mb-6 display-font transform -rotate-2"
           >
+            <span
+              class="inline-block w-2 h-2 bg-black rounded-full mr-2 animate-pulse"
+            ></span>
             Available for Hire
           </div>
           <h1
-            class="text-5xl md:text-7xl font-bold display-font leading-[1.1] mb-6 uppercase"
+            class="text-6xl md:text-8xl font-extrabold display-font leading-[1] mb-6 uppercase tracking-tighter"
           >
             I write code <br />
             <span
-              class="text-white text-shadow bg-black px-2 inline-block transform -skew-x-3"
+              class="text-white bg-black px-4 inline-block transform skew-x-[-5deg] my-2"
               >that works.</span
             >
           </h1>
           <p
-            class="text-lg md:text-xl font-medium text-slate-700 mb-8 max-w-lg border-l-4 border-blue-600 pl-4"
+            class="text-lg md:text-xl font-medium text-gray-700 mb-10 max-w-lg leading-relaxed"
           >
             I'm Subhadip Samanta, a Full Stack Developer & B.Tech student from
             Kolkata. I build fast, accessible, and robust digital solutions.
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-5">
             <a
               href="#projects"
-              class="hard-shadow bg-white text-black px-8 py-3 font-bold display-font uppercase tracking-wide"
+              class="hard-shadow bg-[#FF3366] text-white px-8 py-4 font-bold display-font text-lg uppercase tracking-wide"
             >
               View Projects
             </a>
             <a
               href="https://github.com/SubhadipCSE"
               target="_blank"
-              class="hard-shadow bg-slate-900 text-white px-8 py-3 font-bold display-font uppercase tracking-wide flex items-center gap-2"
+              class="hard-shadow bg-white text-black px-8 py-4 font-bold display-font text-lg uppercase tracking-wide flex items-center gap-3"
             >
               GitHub
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
                 />
@@ -136,11 +162,15 @@
         </div>
 
         <!-- Image -->
-        <div class="order-1 md:order-2 flex justify-center md:justify-end">
+        <div
+          class="order-1 md:order-2 flex justify-center md:justify-end relative"
+        >
           <div
-            class="hard-shadow bg-blue-100 p-2 transform rotate-2 hover:rotate-0 transition-transform duration-300 w-64 h-64 md:w-80 md:h-80 relative"
+            class="absolute inset-0 bg-[#FF3366] hard-shadow transform translate-x-4 translate-y-4 w-64 h-64 md:w-80 md:h-80 -z-10"
+          ></div>
+          <div
+            class="hard-shadow bg-white p-3 transform -rotate-3 hover:rotate-0 transition-transform duration-300 w-64 h-64 md:w-80 md:h-80 z-10"
           >
-            <!-- Added grayscale to image for that pro raw look, hover to see color -->
             <img
               src="IMG_20250405_222500~2 (1).jpg"
               alt="Subhadip"
@@ -151,24 +181,438 @@
       </div>
     </main>
 
-    <!-- Skills Marquee Banner (Continuous Line) -->
-    <div
+    <!-- Skills Section -->
+    <section
       id="skills"
-      class="border-y-4 border-black bg-blue-600 text-white overflow-hidden py-3 display-font uppercase tracking-widest font-bold flex whitespace-nowrap"
+      class="py-24 px-6 md:px-8 max-w-7xl mx-auto w-full border-t-4 border-black bg-white"
     >
-      <div
-        class="animate-[marquee_20s_linear_infinite] flex space-x-8 items-center px-4"
-      >
-        <span>★ HTML/CSS</span> <span>★ JAVASCRIPT</span>
-        <span>★ TAILWIND</span> <span>★ NODE.JS</span> <span>★ EXPRESS.JS</span>
-        <span>★ MONGODB</span> <span>★ C PROGRAMMING</span>
-        <span>★ HTML/CSS</span> <span>★ JAVASCRIPT</span>
-        <span>★ TAILWIND</span> <span>★ NODE.JS</span> <span>★ EXPRESS.JS</span>
-        <span>★ MONGODB</span> <span>★ C PROGRAMMING</span>
+      <div class="flex items-center gap-4 mb-16">
+        <h2
+          class="text-5xl font-extrabold display-font uppercase tracking-tight"
+        >
+          Tech Stack
+        </h2>
+        <div class="h-1 bg-black flex-grow"></div>
+        <span class="text-4xl spin-slow">✺</span>
       </div>
-    </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Frontend -->
+        <div
+          class="hard-shadow bg-[#FDE68A] p-8 flex flex-col transform transition hover:-translate-y-2"
+        >
+          <h3
+            class="text-3xl font-extrabold display-font uppercase mb-8 border-b-4 border-black pb-4 flex justify-between items-end"
+          >
+            Frontend <span class="text-4xl">🎨</span>
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >HTML5</span
+            >
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >CSS3</span
+            >
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-1 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >JavaScript</span
+            >
+            <span
+              class="bg-[#61DAFB] text-black border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >React.js</span
+            >
+            <span
+              class="bg-[#38BDF8] text-black border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-3 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Tailwind</span
+            >
+          </div>
+        </div>
+
+        <!-- Backend & DB -->
+        <div
+          class="hard-shadow bg-[#A7F3D0] p-8 flex flex-col transform transition hover:-translate-y-2"
+        >
+          <h3
+            class="text-3xl font-extrabold display-font uppercase mb-8 border-b-4 border-black pb-4 flex justify-between items-end"
+          >
+            Backend <span class="text-4xl">⚙️</span>
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <span
+              class="bg-[#4ADE80] border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Node.js</span
+            >
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Express.js</span
+            >
+            <span
+              class="bg-[#3776AB] text-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-1 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Python</span
+            >
+            <span
+              class="bg-[#10B981] text-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-1 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >MongoDB</span
+            >
+            <span
+              class="bg-[#FFCA28] text-black border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Firebase</span
+            >
+          </div>
+        </div>
+
+        <!-- Core & Tools -->
+        <div
+          class="hard-shadow bg-[#DDD6FE] p-8 flex flex-col transform transition hover:-translate-y-2"
+        >
+          <h3
+            class="text-3xl font-extrabold display-font uppercase mb-8 border-b-4 border-black pb-4 flex justify-between items-end"
+          >
+            Core & Tools <span class="text-4xl">🛠️</span>
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            <span
+              class="bg-[#A78BFA] text-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-3 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >DSA</span
+            >
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >C / C++</span
+            >
+            <span
+              class="bg-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >Git</span
+            >
+            <span
+              class="bg-black text-white border-2 border-black px-4 py-2 font-bold text-sm uppercase transform -rotate-1 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >GitHub</span
+            >
+            <span
+              class="bg-[#000] text-[#00FF00] border-2 border-black px-4 py-2 font-bold text-sm uppercase transform rotate-2 hover:rotate-0 transition-transform shadow-[2px_2px_0px_0px_#000]"
+              >VS Code</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section
+  id="projects"
+  class="py-24 px-6 md:px-8 max-w-7xl mx-auto w-full border-t-4 border-black"
+>
+  <div class="flex items-center gap-4 mb-16">
+    <span class="text-4xl spin-slow">✺</span>
+    <div class="h-1 bg-black flex-grow"></div>
+    <h2
+      class="text-5xl font-extrabold display-font uppercase tracking-tight"
+    >
+      Selected Work
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    
+    <!-- Project 6: Certificate Verification -->
+    <article class="hard-shadow bg-[#FECACA] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Get Digital Certificate
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">Full Stack</span>
+           <span class="bg-[#EF4444] text-white border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Private</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Live</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+         GetDigitalCertificate is a comprehensive, multi-tenant B2B2C SaaS platform engineered specifically for educational institutions and student unions. It revolutionizes how colleges manage event attendance, issue certificates, and track academic credits like MAR (Mandatory Additional Requirement) points, eliminating paper waste and manual errors.
+        </p>
+      </div>
+      <div class="flex w-full">
+         <div class="w-1/2 bg-gray-200 text-gray-500 text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest border-r-4 border-black flex justify-center items-center cursor-not-allowed">
+          Protected 🔒
+        </div>
+        <a href="https://getdigitalcertificate.tech/" target="_blank" class="w-1/2 bg-[#FECACA] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+    <!-- Project 1: Patient Registration -->
+    <article class="hard-shadow bg-[#C4B5FD] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Patient Registration
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">Full Stack</span>
+            <span class="bg-white text-black border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Public</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Live</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          A complete data management system for doctors and patients built with Node.js, Express, and MongoDB. Secure, fast, and scalable.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <a href="https://github.com/SubhadipCSE/Doctor-Camp" target="_blank" class="w-1/2 bg-white text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors border-r-4 border-black flex justify-center items-center">
+          Source Code
+        </a>
+        <a href="#" target="_blank" class="w-1/2 bg-[#C4B5FD] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 2: Web Calling App -->
+    <article class="hard-shadow bg-[#FDBA74] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Web Calling App
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">WebRTC</span>
+            <span class="bg-white text-black border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Public</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Working on it</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          Real-time peer-to-peer voice and video communication platform leveraging modern WebRTC protocols to bypass standard network barriers.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <a href="https://github.com/SubhadipCSE/Web-Calling-App" target="_blank" class="w-1/2 bg-white text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors border-r-4 border-black flex justify-center items-center">
+          Source Code
+        </a>
+        <a href="#" target="_blank" class="w-1/2 bg-[#FDBA74] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 3: Jarvis AI Assistant -->
+    <article class="hard-shadow bg-[#93C5FD] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Jarvis AI Assistant
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">Python/AI</span>
+            <span class="bg-[#EF4444] text-white border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Private</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Active</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          Personal voice-controlled AI assistant for PC automation, system maintenance, and WhatsApp integration.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <div class="w-1/2 bg-gray-200 text-gray-500 text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest border-r-4 border-black flex justify-center items-center cursor-not-allowed">
+          Protected 🔒
+        </div>
+        <a href="#" target="_blank" class="w-1/2 bg-[#93C5FD] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 4: Mess Management System -->
+    <article class="hard-shadow bg-[#FDE68A] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Mess Manager
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">Firebase</span>
+            <span class="bg-[#EF4444] text-white border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Private</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Building</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          A real-time logistics and expense management system created specifically for GCELT hostel borders.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <div class="w-1/2 bg-gray-200 text-gray-500 text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest border-r-4 border-black flex justify-center items-center cursor-not-allowed">
+          Internal 🔒
+        </div>
+        <a href="#" target="_blank" class="w-1/2 bg-[#FDE68A] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 5: Cricket Score Overlay -->
+    <article class="hard-shadow bg-[#A7F3D0] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Cricket Overlay
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">OBS / JS</span>
+            <span class="bg-white text-black border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Public</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Live</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          Real-time score overlay graphics for cricket matches, customized for OBS Studio live broadcasting.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <a href="#" target="_blank" class="w-1/2 bg-white text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors border-r-4 border-black flex justify-center items-center">
+          Source Code
+        </a>
+        <a href="#" target="_blank" class="w-1/2 bg-[#A7F3D0] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+
+    <!-- Project 7: Kali Linux Landing -->
+    <article class="hard-shadow bg-[#86EFAC] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Kali Linux Landing
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">Frontend</span>
+            <span class="bg-white text-black border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Public</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Live</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          A pixel-perfect, fully responsive UI clone of the official Kali Linux OS website using pure HTML & CSS. Focuses on exact layout matching.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <a href="https://github.com/SubhadipCSE/Responsive_kali_clone" target="_blank" class="w-1/2 bg-white text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors border-r-4 border-black flex justify-center items-center">
+          Source Code
+        </a>
+        <a href="https://kali-linux-clone.vercel.app/" target="_blank" class="w-1/2 bg-[#86EFAC] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 8: Netflix Static Clone -->
+    <article class="hard-shadow bg-[#FCA5A5] flex flex-col h-full overflow-hidden group">
+      <div class="p-8 pb-0 border-b-4 border-black bg-white flex-grow">
+        <div class="flex justify-between items-start mb-6">
+          <h3 class="text-3xl font-extrabold display-font uppercase leading-none max-w-[60%]">
+            Netflix Static Clone
+          </h3>
+          <div class="flex flex-col items-end gap-2">
+            <span class="bg-black text-white border-2 border-black px-3 py-1.5 text-xs font-bold uppercase tracking-wider">UI Design</span>
+            <span class="bg-white text-black border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Public</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span class="text-xs font-black uppercase tracking-widest text-gray-600">Status: Live</span>
+        </div>
+
+        <p class="text-gray-800 font-medium text-lg mb-8">
+          Static frontend clone of the popular streaming platform Netflix, focusing on grid layouts and responsive design structures.
+        </p>
+      </div>
+      <div class="flex w-full">
+        <a href="https://github.com/SubhadipCSE/Netflix_Colne" target="_blank" class="w-1/2 bg-white text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors border-r-4 border-black flex justify-center items-center">
+          Source Code
+        </a>
+        <a href="#" target="_blank" class="w-1/2 bg-[#FCA5A5] text-black text-center py-5 font-extrabold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+          Live Demo ↗
+        </a>
+      </div>
+    </article>
+
+    
+    
+
+  </div>
+</section>
+    <!-- Glassmorphism & Neon Glow Footer -->
     <style>
-      @keyframes marquee {
+      @keyframes gradient-bg {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes marquee-infinite {
         0% {
           transform: translateX(0);
         }
@@ -176,148 +620,179 @@
           transform: translateX(-50%);
         }
       }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .text-gradient {
+        background: linear-gradient(to right, #bef264, #00ffcc, #ff3366);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-bg 5s linear infinite;
+      }
     </style>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 md:px-8 max-w-6xl mx-auto w-full">
-      <h2
-        class="text-4xl md:text-5xl font-bold display-font uppercase mb-12 border-b-4 border-black inline-block pb-2"
-      >
-        Selected Work
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Project 1 -->
-        <article class="hard-shadow bg-white p-6 md:p-8 flex flex-col h-full">
-          <div
-            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
-          >
-            <h3 class="text-2xl font-bold display-font uppercase">
-              Patient Registration
-            </h3>
-            <span
-              class="bg-blue-100 border-2 border-black px-2 py-1 text-xs font-bold uppercase"
-              >Full Stack</span
-            >
-          </div>
-          <p class="text-slate-700 font-medium mb-8 flex-grow">
-            A complete data management system for doctors and patients built
-            with Node.js, Express, and MongoDB. Secure, fast, and scalable.
-          </p>
-          <a
-            href="https://github.com/SubhadipCSE/Doctor-Camp"
-            target="_blank"
-            class="w-full border-2 border-black text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
-          >
-            Source Code <span class="text-xl leading-none">↗</span>
-          </a>
-        </article>
-
-        <!-- Project 2 -->
-        <article
-          class="hard-shadow bg-yellow-100 p-6 md:p-8 flex flex-col h-full"
-        >
-          <div
-            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
-          >
-            <h3 class="text-2xl font-bold display-font uppercase">
-              Web Calling App
-            </h3>
-            <span
-              class="bg-white border-2 border-black px-2 py-1 text-xs font-bold uppercase"
-              >WebRTC</span
-            >
-          </div>
-          <p class="text-slate-700 font-medium mb-8 flex-grow">
-            Real-time peer-to-peer voice and video communication platform
-            leveraging modern WebRTC protocols to bypass standard network
-            barriers.
-          </p>
-          <a
-            href="https://github.com/SubhadipCSE/Web-Calling-App"
-            target="_blank"
-            class="w-full border-2 border-black bg-white text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
-          >
-            Source Code <span class="text-xl leading-none">↗</span>
-          </a>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="hard-shadow bg-white p-6 md:p-8 flex flex-col h-full">
-          <div
-            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
-          >
-            <h3 class="text-2xl font-bold display-font uppercase">
-              Kali Linux Landing
-            </h3>
-            <span
-              class="bg-blue-100 border-2 border-black px-2 py-1 text-xs font-bold uppercase"
-              >Frontend</span
-            >
-          </div>
-          <p class="text-slate-700 font-medium mb-8 flex-grow">
-            A pixel-perfect, fully responsive UI clone of the official Kali
-            Linux OS website using pure HTML & CSS. Focuses on exact layout
-            matching.
-          </p>
-          <a
-            href="https://github.com/SubhadipCSE/Responsive_kali_clone"
-            target="_blank"
-            class="w-full border-2 border-black text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
-          >
-            Source Code <span class="text-xl leading-none">↗</span>
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Huge Footer / Contact -->
     <footer
-      class="mt-10 border-t-4 border-black bg-white pt-16 pb-8 px-6 md:px-8 text-center"
+      class="mt-24 bg-[#0a0a0a] pt-24 pb-12 px-6 md:px-12 relative overflow-hidden text-white"
     >
-      <div class="max-w-4xl mx-auto">
-        <h2
-          class="text-5xl md:text-8xl font-bold display-font uppercase tracking-tighter mb-8"
-        >
-          Let's Work.
-        </h2>
+      <!-- Subtle Background Glow -->
+      <div
+        class="absolute -top-24 -left-24 w-96 h-96 bg-[#BEF264]/10 rounded-full blur-[120px] pointer-events-none"
+      ></div>
+      <div
+        class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#FF3366]/10 rounded-full blur-[120px] pointer-events-none"
+      ></div>
 
-        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16">
-          <a
-            href="mailto:noastedlife@gmail.com"
-            class="hard-shadow bg-black text-white px-8 py-4 font-bold display-font text-xl uppercase"
-          >
-            noastedlife@gmail.com
-          </a>
-          <a
-            href="tel:+918536826782"
-            class="hard-shadow bg-white text-black px-8 py-4 font-bold display-font text-xl uppercase"
-          >
-            +91 8536826782
-          </a>
-        </div>
-
+      <div class="max-w-7xl mx-auto relative z-10">
         <div
-          class="flex justify-center gap-8 border-y-2 border-black py-4 mb-8 font-bold uppercase"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-b border-white/10 pb-20 mb-12"
         >
-          <a href="https://github.com/SubhadipCSE" class="hover:underline"
-            >GitHub</a
-          >
-          <a
-            href="https://linkedin.com/in/subhadip-samanta-92aa76325/"
-            class="hover:underline"
-            >LinkedIn</a
-          >
-          <a
-            href="https://www.instagram.com/noastedlife/"
-            class="hover:underline"
-            >Instagram</a
-          >
+          <!-- Left side: Typography -->
+          <div>
+            <h2
+              class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8"
+            >
+              SAY <span class="text-gradient">HELLO.</span>
+            </h2>
+            <p
+              class="text-lg md:text-xl text-gray-400 max-w-md leading-relaxed mb-8"
+            >
+              Have a vision you want to bring to life? Let's build something
+              exceptional together.
+            </p>
+
+            <!-- Animated Marquee (Smaller & Integrated) -->
+            <div
+              class="w-full bg-white/5 border border-white/10 py-2 rounded-full overflow-hidden flex whitespace-nowrap"
+            >
+              <div
+                class="animate-[marquee-infinite_20s_linear_infinite] flex space-x-12 items-center text-xs font-bold uppercase tracking-[0.2em] text-[#BEF264]"
+              >
+                <span>★ Open to work</span> <span>★ UI/UX Design</span>
+                <span>★ Full Stack Dev</span> <span>★ Open to work</span>
+                <span>★ UI/UX Design</span> <span>★ Full Stack Dev</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Contact Cards -->
+          <div class="space-y-6">
+            <a
+              href="mailto:noastedlife@gmail.com"
+              class="glass-card block p-8 rounded-3xl relative group"
+            >
+              <div class="flex justify-between items-start">
+                <div>
+                  <p
+                    class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2"
+                  >
+                    Email Me
+                  </p>
+                  <h3 class="text-xl md:text-2xl font-bold font-mono">
+                    noastedlife@gmail.com
+                  </h3>
+                </div>
+                <div
+                  class="w-12 h-12 bg-[#BEF264] text-black rounded-full flex items-center justify-center transition-transform group-hover:rotate-45"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="tel:+918536826782"
+              class="glass-card block p-8 rounded-3xl relative group"
+            >
+              <div class="flex justify-between items-start">
+                <div>
+                  <p
+                    class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2"
+                  >
+                    Let's Talk
+                  </p>
+                  <h3 class="text-xl md:text-2xl font-bold font-mono">
+                    +91 8536826782
+                  </h3>
+                </div>
+                <div
+                  class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center transition-transform group-hover:rotate-45"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <p class="font-medium text-slate-500 uppercase text-xs">
-          &copy; 2026 Subhadip Samanta. Designed by human, coded by human.
-        </p>
+        <!-- Bottom Section -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8"
+        >
+          <div class="flex space-x-8">
+            <a
+              href="https://github.com/SubhadipCSE"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+              >Github</a
+            >
+            <a
+              href="https://linkedin.com/in/subhadip-samanta-92aa76325/"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+              >LinkedIn</a
+            >
+            <a
+              href="https://www.instagram.com/noastedlife/"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+              >Instagram</a
+            >
+          </div>
+
+          <p
+            class="text-xs text-gray-600 font-medium uppercase tracking-tighter"
+          >
+            &copy; 2026 Subhadip Samanta — Crafted with Passion
+          </p>
+        </div>
       </div>
     </footer>
   </body>
