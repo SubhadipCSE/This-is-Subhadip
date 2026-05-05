@@ -1,310 +1,571 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subhadip Samanta | Portfolio</title>
+    <title>Subhadip | ROOT_ACCESS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      html {
-        scroll-behavior: smooth;
+      :root {
+        --neon-green: #00ff41;
+        --dark-bg: #050505;
+        --terminal-bg: rgba(0, 20, 0, 0.7);
       }
-      .glass {
-        background: rgba(31, 41, 55, 0.8);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+
+      body {
+        font-family: "Fira Code", monospace;
+        background-color: var(--dark-bg);
+        color: var(--neon-green);
+        overflow-x: hidden;
       }
-      .card-hover:hover {
-        transform: translateY(-5px);
-        transition: all 0.3s ease;
+
+      /* Scanline Effect */
+      .scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.2) 50%,
+          rgba(0, 0, 0, 0.2)
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.6;
+      }
+
+      /* Neon Glow Effects */
+      .neon-text {
+        text-shadow: 0 0 5px var(--neon-green);
+      }
+      .neon-border {
+        border: 1px solid var(--neon-green);
+        box-shadow:
+          inset 0 0 10px rgba(0, 255, 65, 0.2),
+          0 0 10px rgba(0, 255, 65, 0.2);
+      }
+      .neon-border:hover {
+        box-shadow:
+          inset 0 0 15px rgba(0, 255, 65, 0.5),
+          0 0 15px rgba(0, 255, 65, 0.5);
+        background-color: rgba(0, 255, 65, 0.05);
+      }
+
+      /* Blinking Cursor */
+      .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background-color: var(--neon-green);
+        vertical-align: middle;
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--neon-green);
+      }
+
+      /* Terminal Window Header */
+      .terminal-header {
+        background: #111;
+        border-bottom: 1px solid var(--neon-green);
+        display: flex;
+        padding: 5px 10px;
+        align-items: center;
+        gap: 6px;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .dot-red {
+        background: #ff5f56;
+      }
+      .dot-yellow {
+        background: #ffbd2e;
+      }
+      .dot-green {
+        background: #27c93f;
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans">
-    <!-- Navbar -->
+  <body
+    class="antialiased selection:bg-[#00ff41] selection:text-black relative"
+  >
+    <div class="scanlines"></div>
+
     <header
-      class="glass text-white p-4 fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-gray-700"
+      class="fixed top-0 w-full z-50 bg-black/90 border-b border-[#00ff41] backdrop-blur-sm"
     >
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
         <div class="flex items-center space-x-3">
-          <img
-            src="iii.jpeg"
-            alt="Profile"
-            class="w-10 h-10 rounded-full border-2 border-blue-500 shadow-sm"
-          />
-          <h2 class="text-xl font-bold tracking-tight">
-            Subhadip<span class="text-blue-400">.</span>
-          </h2>
+          <span class="text-xl font-bold neon-text"
+            >&gt; SUBHADIP<span class="cursor"></span
+          ></span>
         </div>
-        <nav class="hidden md:flex space-x-8 items-center font-medium">
-          <a href="#home" class="hover:text-blue-400 transition">Home</a>
-          <a href="#about" class="hover:text-blue-400 transition">About</a>
-          <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-          <a href="#projects" class="hover:text-blue-400 transition"
-            >Projects</a
+        <nav class="hidden md:flex space-x-6 text-sm">
+          <a
+            href="#home"
+            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
+            >~/home</a
+          >
+          <a
+            href="#about"
+            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
+            >~/about</a
+          >
+          <a
+            href="#skills"
+            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
+            >~/skills</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
+            >~/projects</a
           >
           <a
             href="#contact"
-            class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition"
-            >Contact</a
+            class="border border-[#00ff41] px-4 py-1 hover:bg-[#00ff41] hover:text-black transition-all"
+            >sudo connect</a
           >
         </nav>
       </div>
     </header>
 
-    <!-- Hero Section -->
     <section
       id="home"
-      class="min-h-screen flex flex-col items-center justify-center px-4 pt-20 text-center bg-gradient-to-b from-slate-100 to-white"
+      class="min-h-screen flex items-center justify-center px-4 pt-20"
     >
-      <div class="relative mb-6">
-        <div
-          class="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-20"
-        ></div>
-        <img
-          src="IMG_20250405_222500~2 (1).jpg"
-          alt="Subhadip"
-          class="relative h-56 w-56 object-cover rounded-full border-4 border-white shadow-2xl mx-auto"
-        />
-      </div>
-      <h1 class="text-5xl font-extrabold mb-4 text-slate-800">
-        Hi, I'm <span class="text-blue-600">Subhadip Samanta</span>
-      </h1>
-      <p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
-        B.Tech student at <strong>GCELT, Kolkata</strong>. I build modern web
-        applications and love exploring complex system architectures.
-      </p>
-      <div class="flex space-x-4">
-        <a
-          href="#projects"
-          class="bg-slate-800 text-white px-8 py-3 rounded-full font-semibold hover:bg-slate-900 transition shadow-lg"
-          >View My Work</a
-        >
-        <a
-          href="#contact"
-          class="bg-white text-slate-800 border border-slate-200 px-8 py-3 rounded-full font-semibold hover:bg-slate-50 transition shadow-md"
-          >Let's Talk</a
-        >
-      </div>
-    </section>
+      <div class="max-w-4xl w-full">
+        <div class="neon-border bg-black rounded-md overflow-hidden">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+            <span class="text-xs text-gray-400 ml-2"
+              >root@kali:~# ./portfolio.sh</span
+            >
+          </div>
+          <div
+            class="p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 bg-[rgba(0,20,0,0.6)]"
+          >
+            <div class="relative group">
+              <div
+                class="absolute -inset-1 bg-[#00ff41] opacity-30 group-hover:opacity-100 blur transition duration-500"
+              ></div>
+              <img
+                src="IMG_20250405_222500~2 (1).jpg"
+                alt="Subhadip"
+                class="relative w-48 h-48 object-cover border-2 border-[#00ff41] grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-white px-4 border-y border-slate-100">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="text-blue-600 font-bold tracking-widest uppercase text-sm"
-          >Introduction</span
-        >
-        <h2 class="text-4xl font-bold mt-2 mb-8">About Me</h2>
-        <p class="text-lg leading-relaxed text-slate-600 italic">
-          "I am passionate about Full Stack development, C programming, and
-          solving real-world problems through clean code."
-        </p>
-        <p class="mt-4 text-slate-600">
-          Bortomane ami modern web technologies jemon Node.js, Express, ebong
-          MongoDB niye kaj korchi. Amon kichu create kora amar uddeshyo ja
-          manusher jibon ke sohoj kore.
-        </p>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-4 text-center bg-slate-50">
-      <h2 class="text-3xl font-bold mb-12">Technical Toolbox</h2>
-      <div
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto"
-      >
-        <!-- Skill Item Template -->
-        <div
-          class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm card-hover border border-slate-100"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-            alt="HTML"
-            class="w-12 h-12 mb-3"
-          />
-          <span class="font-semibold text-slate-700">HTML5</span>
-        </div>
-        <div
-          class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm card-hover border border-slate-100"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt="JS"
-            class="w-12 h-12 mb-3"
-          />
-          <span class="font-semibold text-slate-700">JavaScript</span>
-        </div>
-        <div
-          class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm card-hover border border-slate-100"
-        >
-          <img
-            src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-            alt="Tailwind"
-            class="w-12 h-12 mb-3"
-          />
-          <span class="font-semibold text-slate-700">Tailwind</span>
-        </div>
-        <div
-          class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm card-hover border border-slate-100"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-            alt="Node"
-            class="w-12 h-12 mb-3"
-          />
-          <span class="font-semibold text-slate-700">Node.js</span>
-        </div>
-        <div
-          class="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm card-hover border border-slate-100"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-            alt="DB"
-            class="w-12 h-12 mb-3"
-          />
-          <span class="font-semibold text-slate-700">MongoDB</span>
+            <div class="flex-1">
+              <h1 class="text-3xl md:text-5xl font-bold mb-4 neon-text">
+                SYSTEM_ADMIN: <br /><span class="text-white"
+                  >Subhadip Samanta</span
+                >
+              </h1>
+              <div class="text-lg mb-6 h-16">
+                <span class="text-gray-400">$ whoami</span><br />
+                <span id="typing-text"></span><span class="cursor"></span>
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="#projects"
+                  class="bg-[#00ff41] text-black px-6 py-2 font-bold hover:bg-white transition-colors duration-300 uppercase tracking-wider"
+                  >[ Execute_Projects ]</a
+                >
+                <a
+                  href="https://github.com/SubhadipCSE"
+                  target="_blank"
+                  class="border border-[#00ff41] text-[#00ff41] px-6 py-2 hover:bg-[#00ff41] hover:text-black transition-colors duration-300 uppercase tracking-wider"
+                  >GitHub_Repo</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 px-4 bg-white">
+    <section id="about" class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-2xl font-bold mb-8 border-b border-[#00ff41] pb-2 inline-block"
+        >
+          <span class="text-white">01.</span> ABOUT_ME
+        </h2>
+        <div
+          class="neon-border p-6 bg-black/50 text-sm md:text-base leading-relaxed"
+        >
+          <p class="mb-4">
+            <span class="text-blue-400">const</span>
+            <span class="text-yellow-400">developer</span> = {
+          </p>
+          <p class="ml-4 mb-2">
+            <span class="text-white">name:</span>
+            <span class="text-[#00ff41]">"Subhadip Samanta"</span>,
+          </p>
+          <p class="ml-4 mb-2">
+            <span class="text-white">education:</span>
+            <span class="text-[#00ff41]"
+              >"B.Tech in Engineering, GCELT Kolkata"</span
+            >,
+          </p>
+          <p class="ml-4 mb-2">
+            <span class="text-white">role:</span>
+            <span class="text-[#00ff41]">"Full Stack Web Developer"</span>,
+          </p>
+          <p class="ml-4 mb-2">
+            <span class="text-white">passion:</span>
+            <span class="text-[#00ff41]"
+              >["Building modern web apps", "C Programming", "Solving real-world
+              problems"]</span
+            >
+          </p>
+          <p>};</p>
+          <p class="mt-4 text-gray-400">
+            /* I love learning new technologies and hacking my way through
+            complex coding challenges. */
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 px-4 bg-[#020a02]">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-2xl font-bold mb-10 border-b border-[#00ff41] pb-2 inline-block"
+        >
+          <span class="text-white">02.</span> SYSTEM_CAPABILITIES
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="HTML"
+            />
+            <span class="tracking-widest text-sm">HTML5</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="CSS"
+            />
+            <span class="tracking-widest text-sm">CSS3</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="Tailwind"
+            />
+            <span class="tracking-widest text-sm">TAILWIND</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="JS"
+            />
+            <span class="tracking-widest text-sm">JAVASCRIPT</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="Node"
+            />
+            <span class="tracking-widest text-sm">NODE.JS</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="Express"
+            />
+            <span class="tracking-widest text-sm">EXPRESS</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="MongoDB"
+            />
+            <span class="tracking-widest text-sm">MONGODB</span>
+          </div>
+          <div
+            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+              class="w-12 h-12 grayscale contrast-200"
+              alt="C"
+            />
+            <span class="tracking-widest text-sm">C_LANG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="flex justify-between items-end mb-12">
-          <div>
-            <h2 class="text-4xl font-bold">Featured Projects</h2>
-            <p class="text-slate-500 mt-2">
-              Kichu shera kaj ja ami eporjonto korechi.
+        <h2
+          class="text-2xl font-bold mb-10 border-b border-[#00ff41] pb-2 inline-block"
+        >
+          <span class="text-white">03.</span> EXECUTED_PAYLOADS
+          <span class="text-xs text-gray-500">(Projects)</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="neon-border bg-black p-6 group">
+            <div class="flex justify-between items-start mb-4">
+              <h3
+                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
+              >
+                > Patient_Registration.exe
+              </h3>
+              <span class="text-xs border border-gray-600 px-2 py-1"
+                >FULL_STACK</span
+              >
+            </div>
+            <p class="text-gray-400 text-sm mb-6">
+              A full-stack web app to manage doctor and patient data securely
+              using Node.js, Express, and MongoDB.
             </p>
+            <a
+              href="https://github.com/SubhadipCSE/Doctor-Camp"
+              target="_blank"
+              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
+            >
+              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
+            </a>
           </div>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1 -->
-          <div
-            class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 card-hover"
-          >
-            <div class="p-8">
-              <div
-                class="text-blue-600 mb-4 font-mono text-sm tracking-tighter uppercase font-bold"
-              >
-                Full Stack App
-              </div>
+
+          <div class="neon-border bg-black p-6 group">
+            <div class="flex justify-between items-start mb-4">
               <h3
-                class="text-2xl font-bold mb-3 group-hover:text-blue-600 transition"
+                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
               >
-                Patient Registration
+                > Web_Calling_App.sh
               </h3>
-              <p class="text-slate-600 mb-6">
-                Node.js, Express, ebong MongoDB babohar kore doctor-patient
-                management system.
-              </p>
-              <a
-                href="https://github.com/SubhadipCSE/Doctor-Camp"
-                target="_blank"
-                class="inline-flex items-center text-blue-600 font-semibold"
+              <span class="text-xs border border-gray-600 px-2 py-1"
+                >WebRTC</span
               >
-                View Source
-                <svg
-                  class="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
             </div>
+            <p class="text-gray-400 text-sm mb-6">
+              A high-performance web application for making voice and video
+              calls bypassing standard network barriers using WebRTC.
+            </p>
+            <a
+              href="https://github.com/SubhadipCSE/Web-Calling-App"
+              target="_blank"
+              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
+            >
+              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
+            </a>
           </div>
-          <!-- Project 2 -->
-          <div
-            class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 card-hover"
-          >
-            <div class="p-8">
-              <div
-                class="text-purple-600 mb-4 font-mono text-sm tracking-tighter uppercase font-bold"
-              >
-                Real-time Web
-              </div>
+
+          <div class="neon-border bg-black p-6 group">
+            <div class="flex justify-between items-start mb-4">
               <h3
-                class="text-2xl font-bold mb-3 group-hover:text-purple-600 transition"
+                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
               >
-                Web Calling App
+                > Kali_Linux_Clone.html
               </h3>
-              <p class="text-slate-600 mb-6">
-                WebRTC technology babohar kore high-quality voice ebong video
-                calling platform.
-              </p>
-              <a
-                href="https://github.com/SubhadipCSE/Web-Calling-App"
-                target="_blank"
-                class="inline-flex items-center text-purple-600 font-semibold"
+              <span class="text-xs border border-gray-600 px-2 py-1"
+                >FRONTEND</span
               >
-                View Source
-                <svg
-                  class="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
             </div>
+            <p class="text-gray-400 text-sm mb-6">
+              A pixel-perfect landing page clone of the Kali Linux operating
+              system. Pure HTML & CSS execution.
+            </p>
+            <a
+              href="https://github.com/SubhadipCSE/Responsive_kali_clone"
+              target="_blank"
+              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
+            >
+              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
+            </a>
+          </div>
+
+          <div class="neon-border bg-black p-6 group">
+            <div class="flex justify-between items-start mb-4">
+              <h3
+                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
+              >
+                > Netflix_Clone.css
+              </h3>
+              <span class="text-xs border border-gray-600 px-2 py-1"
+                >FRONTEND</span
+              >
+            </div>
+            <p class="text-gray-400 text-sm mb-6">
+              Static clone of the Netflix streaming platform UI to demonstrate
+              advanced layout structuring.
+            </p>
+            <a
+              href="https://github.com/SubhadipCSE/Netflix_Colne"
+              target="_blank"
+              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
+            >
+              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <footer id="contact" class="bg-slate-900 text-white py-20 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-        <p class="text-slate-400 mb-10">
-          Projekter alochona ba onno kono proshner jonno message korte paren.
+    <footer
+      id="contact"
+      class="border-t border-[#00ff41] bg-black py-16 px-4 mt-20 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 opacity-10"
+        style="
+          background-image:
+            linear-gradient(#00ff41 1px, transparent 1px),
+            linear-gradient(90deg, #00ff41 1px, transparent 1px);
+          background-size: 30px 30px;
+        "
+      ></div>
+
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <h2
+          class="text-3xl font-bold mb-6 text-white uppercase tracking-widest"
+        >
+          <span class="text-[#00ff41]">></span> Establish_Connection
+        </h2>
+        <p class="text-gray-400 mb-10">
+          System is ready to receive incoming transmissions. Open a secure
+          channel via email or phone.
         </p>
 
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
           <a
             href="mailto:noastedlife@gmail.com"
-            class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-xl font-bold transition"
-            >Email Me</a
+            class="neon-border bg-[#00ff41]/10 px-8 py-3 text-white hover:bg-[#00ff41] hover:text-black font-bold transition-all flex justify-center items-center gap-2"
           >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            PING_EMAIL
+          </a>
           <a
             href="tel:+918536826782"
-            class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-xl font-bold transition"
-            >Call Now</a
+            class="neon-border bg-black px-8 py-3 text-white hover:bg-[#00ff41] hover:text-black font-bold transition-all flex justify-center items-center gap-2"
           >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path>
+            </svg>
+            DIAL_NODE
+          </a>
         </div>
 
-        <div class="flex justify-center space-x-6 mb-12">
+        <div class="flex justify-center gap-8 mb-12">
           <a
             href="https://github.com/SubhadipCSE"
             target="_blank"
-            class="opacity-70 hover:opacity-100 transition text-2xl"
-            >GitHub</a
+            class="text-gray-500 hover:text-[#00ff41] transition-colors"
           >
+            <span class="text-xl font-bold">[ GitHub ]</span>
+          </a>
           <a
-            href="https://linkedin.com/in/subhadip-samanta-92aa76325/"
+            href="https://www.linkedin.com/in/subhadip-samanta-92aa76325/"
             target="_blank"
-            class="opacity-70 hover:opacity-100 transition text-2xl"
-            >LinkedIn</a
+            class="text-gray-500 hover:text-[#00ff41] transition-colors"
           >
+            <span class="text-xl font-bold">[ LinkedIn ]</span>
+          </a>
         </div>
 
-        <div class="border-t border-slate-800 pt-8 text-slate-500 text-sm">
-          &copy; 2026 Subhadip Samanta. Built with 💙 and Tailwind CSS.
+        <div class="text-xs text-gray-600 mt-10">
+          root@server:~# exit <br />
+          Connection to server closed. <br />
+          &copy; 2026 SUBHADIP SAMANTA. ALL RIGHTS SECURED.
         </div>
       </div>
     </footer>
+
+    <script>
+      const textToType = "B.Tech Engineering Student | Aspiring Web Developer";
+      const typingElement = document.getElementById("typing-text");
+      let index = 0;
+
+      function type() {
+        if (index < textToType.length) {
+          typingElement.innerHTML += textToType.charAt(index);
+          index++;
+          setTimeout(type, 50); // Speed of typing
+        }
+      }
+
+      // Start typing effect after a short delay
+      setTimeout(type, 1000);
+    </script>
   </body>
 </html>
