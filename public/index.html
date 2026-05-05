@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subhadip | ROOT_ACCESS</title>
+    <title>Subhadip OS | Root</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -13,559 +12,534 @@
 
     <style>
       :root {
+        --cyan: #0ff;
         --neon-green: #00ff41;
-        --dark-bg: #050505;
-        --terminal-bg: rgba(0, 20, 0, 0.7);
+        --dark-bg: #030303;
+        --panel-bg: rgba(5, 10, 15, 0.85);
       }
 
       body {
         font-family: "Fira Code", monospace;
         background-color: var(--dark-bg);
-        color: var(--neon-green);
+        color: var(--cyan);
         overflow-x: hidden;
+        margin: 0;
       }
 
-      /* Scanline Effect */
-      .scanlines {
+      /* Matrix Background Canvas */
+      #matrix-canvas {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0) 50%,
-          rgba(0, 0, 0, 0.2) 50%,
-          rgba(0, 0, 0, 0.2)
-        );
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.6;
+        z-index: -1;
+        opacity: 0.3; /* Adjusted for readability */
       }
 
-      /* Neon Glow Effects */
-      .neon-text {
-        text-shadow: 0 0 5px var(--neon-green);
-      }
-      .neon-border {
-        border: 1px solid var(--neon-green);
+      /* Glassmorphism Cyber Panels */
+      .cyber-panel {
+        background: var(--panel-bg);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
         box-shadow:
-          inset 0 0 10px rgba(0, 255, 65, 0.2),
-          0 0 10px rgba(0, 255, 65, 0.2);
-      }
-      .neon-border:hover {
-        box-shadow:
-          inset 0 0 15px rgba(0, 255, 65, 0.5),
-          0 0 15px rgba(0, 255, 65, 0.5);
-        background-color: rgba(0, 255, 65, 0.05);
+          0 0 15px rgba(0, 255, 255, 0.05),
+          inset 0 0 20px rgba(0, 255, 255, 0.02);
+        position: relative;
       }
 
-      /* Blinking Cursor */
-      .cursor {
-        display: inline-block;
-        width: 10px;
-        height: 1.2em;
-        background-color: var(--neon-green);
-        vertical-align: middle;
-        animation: blink 1s step-end infinite;
+      .cyber-panel::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 20px;
+        height: 20px;
+        border-top: 2px solid var(--cyan);
+        border-left: 2px solid var(--cyan);
       }
-      @keyframes blink {
+      .cyber-panel::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 20px;
+        height: 20px;
+        border-bottom: 2px solid var(--cyan);
+        border-right: 2px solid var(--cyan);
+      }
+
+      /* Glitch Text Effect */
+      .glitch {
+        position: relative;
+        color: white;
+        text-shadow:
+          0.05em 0 0 rgba(255, 0, 0, 0.75),
+          -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+          0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+        animation: glitch 500ms infinite;
+      }
+      @keyframes glitch {
+        0% {
+          text-shadow:
+            0.05em 0 0 rgba(255, 0, 0, 0.75),
+            -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+            -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        14% {
+          text-shadow:
+            0.05em 0 0 rgba(255, 0, 0, 0.75),
+            -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+            -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        15% {
+          text-shadow:
+            -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+            0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+            -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        49% {
+          text-shadow:
+            -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+            0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+            -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
         50% {
-          opacity: 0;
+          text-shadow:
+            0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+            0.05em 0 0 rgba(0, 255, 0, 0.75),
+            0 -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        99% {
+          text-shadow:
+            0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+            0.05em 0 0 rgba(0, 255, 0, 0.75),
+            0 -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        100% {
+          text-shadow:
+            -0.025em 0 0 rgba(255, 0, 0, 0.75),
+            -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+            -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
         }
       }
 
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
+      /* Glow buttons */
+      .cyber-btn {
+        position: relative;
+        background: transparent;
+        border: 1px solid var(--cyan);
+        color: var(--cyan);
+        text-transform: uppercase;
+        transition: 0.3s;
+        overflow: hidden;
       }
-      ::-webkit-scrollbar-track {
-        background: #000;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--neon-green);
+      .cyber-btn:hover {
+        background: var(--cyan);
+        color: #000;
+        box-shadow: 0 0 15px var(--cyan);
       }
 
-      /* Terminal Window Header */
-      .terminal-header {
-        background: #111;
-        border-bottom: 1px solid var(--neon-green);
-        display: flex;
-        padding: 5px 10px;
-        align-items: center;
-        gap: 6px;
-      }
-      .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-      }
-      .dot-red {
-        background: #ff5f56;
-      }
-      .dot-yellow {
-        background: #ffbd2e;
-      }
-      .dot-green {
-        background: #27c93f;
+      /* Interactive Terminal Scroll */
+      #terminal-output {
+        scrollbar-width: thin;
+        scrollbar-color: var(--cyan) transparent;
       }
     </style>
   </head>
-  <body
-    class="antialiased selection:bg-[#00ff41] selection:text-black relative"
-  >
-    <div class="scanlines"></div>
+  <body class="selection:bg-cyan-500 selection:text-black">
+    <!-- Matrix Canvas -->
+    <canvas id="matrix-canvas"></canvas>
 
+    <!-- Top Navigation Bar -->
     <header
-      class="fixed top-0 w-full z-50 bg-black/90 border-b border-[#00ff41] backdrop-blur-sm"
+      class="fixed top-0 w-full z-50 cyber-panel border-b-0 border-t-0 p-4"
     >
-      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-        <div class="flex items-center space-x-3">
-          <span class="text-xl font-bold neon-text"
-            >&gt; SUBHADIP<span class="cursor"></span
-          ></span>
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+          <h1 class="text-xl font-bold tracking-widest glitch">
+            SUBHADIP_OS_v2.0
+          </h1>
         </div>
-        <nav class="hidden md:flex space-x-6 text-sm">
-          <a
-            href="#home"
-            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
-            >~/home</a
-          >
-          <a
-            href="#about"
-            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
-            >~/about</a
-          >
-          <a
-            href="#skills"
-            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
-            >~/skills</a
-          >
-          <a
-            href="#projects"
-            class="hover:text-white hover:bg-[#00ff41] px-2 py-1 transition-all duration-300"
-            >~/projects</a
-          >
-          <a
-            href="#contact"
-            class="border border-[#00ff41] px-4 py-1 hover:bg-[#00ff41] hover:text-black transition-all"
-            >sudo connect</a
-          >
-        </nav>
+        <div class="text-sm text-gray-400 hidden md:block">
+          STATUS: <span class="text-green-400">ONLINE</span> | LOCATION:
+          <span class="text-cyan-400">KOLKATA_NODE</span>
+        </div>
       </div>
     </header>
 
-    <section
-      id="home"
-      class="min-h-screen flex items-center justify-center px-4 pt-20"
+    <!-- Main Grid Layout -->
+    <main
+      class="max-w-7xl mx-auto pt-24 pb-12 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-screen"
     >
-      <div class="max-w-4xl w-full">
-        <div class="neon-border bg-black rounded-md overflow-hidden">
-          <div class="terminal-header">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-            <span class="text-xs text-gray-400 ml-2"
-              >root@kali:~# ./portfolio.sh</span
-            >
-          </div>
-          <div
-            class="p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 bg-[rgba(0,20,0,0.6)]"
-          >
-            <div class="relative group">
-              <div
-                class="absolute -inset-1 bg-[#00ff41] opacity-30 group-hover:opacity-100 blur transition duration-500"
-              ></div>
-              <img
-                src="IMG_20250405_222500~2 (1).jpg"
-                alt="Subhadip"
-                class="relative w-48 h-48 object-cover border-2 border-[#00ff41] grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-
-            <div class="flex-1">
-              <h1 class="text-3xl md:text-5xl font-bold mb-4 neon-text">
-                SYSTEM_ADMIN: <br /><span class="text-white"
-                  >Subhadip Samanta</span
-                >
-              </h1>
-              <div class="text-lg mb-6 h-16">
-                <span class="text-gray-400">$ whoami</span><br />
-                <span id="typing-text"></span><span class="cursor"></span>
-              </div>
-              <div class="flex gap-4">
-                <a
-                  href="#projects"
-                  class="bg-[#00ff41] text-black px-6 py-2 font-bold hover:bg-white transition-colors duration-300 uppercase tracking-wider"
-                  >[ Execute_Projects ]</a
-                >
-                <a
-                  href="https://github.com/SubhadipCSE"
-                  target="_blank"
-                  class="border border-[#00ff41] text-[#00ff41] px-6 py-2 hover:bg-[#00ff41] hover:text-black transition-colors duration-300 uppercase tracking-wider"
-                  >GitHub_Repo</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="py-20 px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2
-          class="text-2xl font-bold mb-8 border-b border-[#00ff41] pb-2 inline-block"
-        >
-          <span class="text-white">01.</span> ABOUT_ME
-        </h2>
+      <!-- Left Column: Identity & Bio -->
+      <div class="lg:col-span-1 space-y-6">
+        <!-- Profile Card -->
         <div
-          class="neon-border p-6 bg-black/50 text-sm md:text-base leading-relaxed"
+          class="cyber-panel p-6 flex flex-col items-center text-center group"
         >
-          <p class="mb-4">
-            <span class="text-blue-400">const</span>
-            <span class="text-yellow-400">developer</span> = {
+          <div class="relative w-40 h-40 mb-6">
+            <div
+              class="absolute inset-0 bg-cyan-500 blur-md opacity-20 group-hover:opacity-60 transition"
+            ></div>
+            <img
+              src="IMG_20250405_222500~2 (1).jpg"
+              alt="Profile"
+              class="relative w-full h-full object-cover border border-cyan-500 grayscale group-hover:grayscale-0 transition duration-500"
+              style="
+                clip-path: polygon(
+                  10% 0,
+                  100% 0,
+                  100% 90%,
+                  90% 100%,
+                  0 100%,
+                  0 10%
+                );
+              "
+            />
+          </div>
+          <h2 class="text-2xl font-bold text-white mb-1">Subhadip Samanta</h2>
+          <h3 class="text-sm text-cyan-400 tracking-widest mb-4">
+            FULL_STACK_DEV
+          </h3>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            B.Tech student at GCELT. Specializing in modern web architectures
+            and C programming.
           </p>
-          <p class="ml-4 mb-2">
-            <span class="text-white">name:</span>
-            <span class="text-[#00ff41]">"Subhadip Samanta"</span>,
-          </p>
-          <p class="ml-4 mb-2">
-            <span class="text-white">education:</span>
-            <span class="text-[#00ff41]"
-              >"B.Tech in Engineering, GCELT Kolkata"</span
-            >,
-          </p>
-          <p class="ml-4 mb-2">
-            <span class="text-white">role:</span>
-            <span class="text-[#00ff41]">"Full Stack Web Developer"</span>,
-          </p>
-          <p class="ml-4 mb-2">
-            <span class="text-white">passion:</span>
-            <span class="text-[#00ff41]"
-              >["Building modern web apps", "C Programming", "Solving real-world
-              problems"]</span
+          <div class="flex w-full gap-3">
+            <a
+              href="https://github.com/SubhadipCSE"
+              target="_blank"
+              class="cyber-btn w-1/2 py-2 text-sm text-center"
+              >GitHub</a
             >
-          </p>
-          <p>};</p>
-          <p class="mt-4 text-gray-400">
-            /* I love learning new technologies and hacking my way through
-            complex coding challenges. */
-          </p>
+            <a
+              href="https://linkedin.com/in/subhadip-samanta-92aa76325/"
+              target="_blank"
+              class="cyber-btn w-1/2 py-2 text-sm text-center"
+              >LinkedIn</a
+            >
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section id="skills" class="py-20 px-4 bg-[#020a02]">
-      <div class="max-w-5xl mx-auto">
-        <h2
-          class="text-2xl font-bold mb-10 border-b border-[#00ff41] pb-2 inline-block"
-        >
-          <span class="text-white">02.</span> SYSTEM_CAPABILITIES
-        </h2>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Live Terminal Console (Interactive) -->
+        <div class="cyber-panel p-0 flex flex-col h-[350px]">
           <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+            class="bg-gray-900 px-4 py-2 text-xs text-gray-400 border-b border-gray-800 flex justify-between"
           >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="HTML"
-            />
-            <span class="tracking-widest text-sm">HTML5</span>
+            <span>root@subhadip-os:~</span>
+            <span>bash</span>
           </div>
           <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
+            id="terminal-output"
+            class="p-4 flex-1 overflow-y-auto text-sm text-green-400 space-y-2"
           >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="CSS"
-            />
-            <span class="tracking-widest text-sm">CSS3</span>
+            <div>> Initializing core modules... [OK]</div>
+            <div>> Welcome to Subhadip OS interactive terminal.</div>
+            <div class="text-gray-400">
+              Type <span class="text-cyan-400">'help'</span> to see available
+              commands.
+            </div>
           </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="Tailwind"
+          <div class="p-4 border-t border-gray-800 flex items-center gap-2">
+            <span class="text-cyan-400">~/guest$</span>
+            <input
+              type="text"
+              id="term-input"
+              class="bg-transparent border-none outline-none text-white w-full font-mono text-sm"
+              autocomplete="off"
+              autofocus
             />
-            <span class="tracking-widest text-sm">TAILWIND</span>
-          </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="JS"
-            />
-            <span class="tracking-widest text-sm">JAVASCRIPT</span>
-          </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="Node"
-            />
-            <span class="tracking-widest text-sm">NODE.JS</span>
-          </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="Express"
-            />
-            <span class="tracking-widest text-sm">EXPRESS</span>
-          </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="MongoDB"
-            />
-            <span class="tracking-widest text-sm">MONGODB</span>
-          </div>
-          <div
-            class="neon-border p-4 flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-2 cursor-crosshair"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
-              class="w-12 h-12 grayscale contrast-200"
-              alt="C"
-            />
-            <span class="tracking-widest text-sm">C_LANG</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="projects" class="py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2
-          class="text-2xl font-bold mb-10 border-b border-[#00ff41] pb-2 inline-block"
-        >
-          <span class="text-white">03.</span> EXECUTED_PAYLOADS
-          <span class="text-xs text-gray-500">(Projects)</span>
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="neon-border bg-black p-6 group">
-            <div class="flex justify-between items-start mb-4">
-              <h3
-                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
-              >
-                > Patient_Registration.exe
-              </h3>
-              <span class="text-xs border border-gray-600 px-2 py-1"
-                >FULL_STACK</span
-              >
-            </div>
-            <p class="text-gray-400 text-sm mb-6">
-              A full-stack web app to manage doctor and patient data securely
-              using Node.js, Express, and MongoDB.
-            </p>
-            <a
-              href="https://github.com/SubhadipCSE/Doctor-Camp"
-              target="_blank"
-              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
+      <!-- Right Column: Skills & Projects -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Tech Stack Radar -->
+        <div class="cyber-panel p-6">
+          <h3
+            class="text-lg text-white mb-6 border-l-4 border-cyan-500 pl-3 uppercase tracking-widest"
+          >
+            Tech_Stack_Matrix
+          </h3>
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+            <!-- Skill Item -->
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
             >
-              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
-            </a>
+              <span class="text-2xl mb-2 block">🌐</span>
+              <span class="text-xs text-gray-300">HTML/CSS</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">⚡</span>
+              <span class="text-xs text-gray-300">JavaScript</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">🎨</span>
+              <span class="text-xs text-gray-300">Tailwind</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">🟢</span>
+              <span class="text-xs text-gray-300">Node.js</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">🚂</span>
+              <span class="text-xs text-gray-300">Express</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">🍃</span>
+              <span class="text-xs text-gray-300">MongoDB</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">⚙️</span>
+              <span class="text-xs text-gray-300">C Lang</span>
+            </div>
+            <div
+              class="border border-gray-800 p-4 text-center hover:border-cyan-500 hover:bg-cyan-900/20 transition cursor-crosshair"
+            >
+              <span class="text-2xl mb-2 block">🐙</span>
+              <span class="text-xs text-gray-300">Git/GitHub</span>
+            </div>
           </div>
+        </div>
 
-          <div class="neon-border bg-black p-6 group">
-            <div class="flex justify-between items-start mb-4">
-              <h3
-                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
-              >
-                > Web_Calling_App.sh
-              </h3>
-              <span class="text-xs border border-gray-600 px-2 py-1"
-                >WebRTC</span
+        <!-- Project Databanks -->
+        <div class="cyber-panel p-6">
+          <h3
+            class="text-lg text-white mb-6 border-l-4 border-cyan-500 pl-3 uppercase tracking-widest"
+          >
+            Active_Payloads (Projects)
+          </h3>
+          <div class="space-y-4">
+            <!-- Project Row 1 -->
+            <div
+              class="group border border-gray-800 p-5 hover:border-cyan-500 transition relative overflow-hidden bg-black/40"
+            >
+              <div
+                class="absolute right-0 top-0 h-full w-1 bg-cyan-500 transform scale-y-0 group-hover:scale-y-100 transition origin-bottom"
+              ></div>
+              <div class="flex justify-between items-start mb-2">
+                <h4
+                  class="text-lg text-white group-hover:text-cyan-400 transition"
+                >
+                  > Patient_Registration_Sys
+                </h4>
+                <span class="text-xs text-cyan-500 bg-cyan-900/30 px-2 py-1"
+                  >FULL_STACK</span
+                >
+              </div>
+              <p class="text-sm text-gray-400 mb-4 w-4/5">
+                End-to-end management architecture utilizing Node.js and MongoDB
+                database instances.
+              </p>
+              <a
+                href="https://github.com/SubhadipCSE/Doctor-Camp"
+                target="_blank"
+                class="text-xs text-white uppercase tracking-widest hover:text-cyan-400"
+                >[ Access_Source ]</a
               >
             </div>
-            <p class="text-gray-400 text-sm mb-6">
-              A high-performance web application for making voice and video
-              calls bypassing standard network barriers using WebRTC.
-            </p>
-            <a
-              href="https://github.com/SubhadipCSE/Web-Calling-App"
-              target="_blank"
-              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
-            >
-              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
-            </a>
-          </div>
 
-          <div class="neon-border bg-black p-6 group">
-            <div class="flex justify-between items-start mb-4">
-              <h3
-                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
-              >
-                > Kali_Linux_Clone.html
-              </h3>
-              <span class="text-xs border border-gray-600 px-2 py-1"
-                >FRONTEND</span
+            <!-- Project Row 2 -->
+            <div
+              class="group border border-gray-800 p-5 hover:border-cyan-500 transition relative overflow-hidden bg-black/40"
+            >
+              <div
+                class="absolute right-0 top-0 h-full w-1 bg-cyan-500 transform scale-y-0 group-hover:scale-y-100 transition origin-bottom"
+              ></div>
+              <div class="flex justify-between items-start mb-2">
+                <h4
+                  class="text-lg text-white group-hover:text-cyan-400 transition"
+                >
+                  > WebRTC_Calling_Module
+                </h4>
+                <span class="text-xs text-cyan-500 bg-cyan-900/30 px-2 py-1"
+                  >COMM_PROTOCOLS</span
+                >
+              </div>
+              <p class="text-sm text-gray-400 mb-4 w-4/5">
+                Real-time peer-to-peer voice/video transmission interface
+                bypassing standard barriers.
+              </p>
+              <a
+                href="https://github.com/SubhadipCSE/Web-Calling-App"
+                target="_blank"
+                class="text-xs text-white uppercase tracking-widest hover:text-cyan-400"
+                >[ Access_Source ]</a
               >
             </div>
-            <p class="text-gray-400 text-sm mb-6">
-              A pixel-perfect landing page clone of the Kali Linux operating
-              system. Pure HTML & CSS execution.
-            </p>
-            <a
-              href="https://github.com/SubhadipCSE/Responsive_kali_clone"
-              target="_blank"
-              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
-            >
-              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
-            </a>
-          </div>
 
-          <div class="neon-border bg-black p-6 group">
-            <div class="flex justify-between items-start mb-4">
-              <h3
-                class="text-xl font-bold text-white group-hover:text-[#00ff41] transition-colors"
-              >
-                > Netflix_Clone.css
-              </h3>
-              <span class="text-xs border border-gray-600 px-2 py-1"
-                >FRONTEND</span
+            <!-- Project Row 3 -->
+            <div
+              class="group border border-gray-800 p-5 hover:border-cyan-500 transition relative overflow-hidden bg-black/40"
+            >
+              <div
+                class="absolute right-0 top-0 h-full w-1 bg-cyan-500 transform scale-y-0 group-hover:scale-y-100 transition origin-bottom"
+              ></div>
+              <div class="flex justify-between items-start mb-2">
+                <h4
+                  class="text-lg text-white group-hover:text-cyan-400 transition"
+                >
+                  > Kali_Linux_Interface
+                </h4>
+                <span class="text-xs text-cyan-500 bg-cyan-900/30 px-2 py-1"
+                  >UI_CLONE</span
+                >
+              </div>
+              <p class="text-sm text-gray-400 mb-4 w-4/5">
+                Pixel-perfect static recreation of the Kali OS landing page.
+                Pure frontend payload.
+              </p>
+              <a
+                href="https://github.com/SubhadipCSE/Responsive_kali_clone"
+                target="_blank"
+                class="text-xs text-white uppercase tracking-widest hover:text-cyan-400"
+                >[ Access_Source ]</a
               >
             </div>
-            <p class="text-gray-400 text-sm mb-6">
-              Static clone of the Netflix streaming platform UI to demonstrate
-              advanced layout structuring.
-            </p>
-            <a
-              href="https://github.com/SubhadipCSE/Netflix_Colne"
-              target="_blank"
-              class="text-[#00ff41] hover:text-white flex items-center gap-2 uppercase text-sm font-bold"
-            >
-              [ INITIATE_DOWNLOAD ] <span class="text-lg">→</span>
-            </a>
           </div>
         </div>
       </div>
-    </section>
+    </main>
 
+    <!-- Contact Footer -->
     <footer
-      id="contact"
-      class="border-t border-[#00ff41] bg-black py-16 px-4 mt-20 relative overflow-hidden"
+      class="border-t border-cyan-900 bg-black py-8 relative z-10 text-center"
     >
       <div
-        class="absolute inset-0 opacity-10"
-        style="
-          background-image:
-            linear-gradient(#00ff41 1px, transparent 1px),
-            linear-gradient(90deg, #00ff41 1px, transparent 1px);
-          background-size: 30px 30px;
-        "
-      ></div>
-
-      <div class="max-w-3xl mx-auto text-center relative z-10">
-        <h2
-          class="text-3xl font-bold mb-6 text-white uppercase tracking-widest"
-        >
-          <span class="text-[#00ff41]">></span> Establish_Connection
-        </h2>
-        <p class="text-gray-400 mb-10">
-          System is ready to receive incoming transmissions. Open a secure
-          channel via email or phone.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+        class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="text-gray-500 text-sm">
+          [ SYSTEM SECURED BY SUBHADIP SAMANTA © 2026 ]
+        </div>
+        <div class="flex gap-4">
           <a
             href="mailto:noastedlife@gmail.com"
-            class="neon-border bg-[#00ff41]/10 px-8 py-3 text-white hover:bg-[#00ff41] hover:text-black font-bold transition-all flex justify-center items-center gap-2"
+            class="cyber-btn px-4 py-2 text-xs"
+            >INITIATE_EMAIL</a
           >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              ></path>
-            </svg>
-            PING_EMAIL
-          </a>
-          <a
-            href="tel:+918536826782"
-            class="neon-border bg-black px-8 py-3 text-white hover:bg-[#00ff41] hover:text-black font-bold transition-all flex justify-center items-center gap-2"
+          <a href="tel:+918536826782" class="cyber-btn px-4 py-2 text-xs"
+            >DIAL_COMMS</a
           >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              ></path>
-            </svg>
-            DIAL_NODE
-          </a>
-        </div>
-
-        <div class="flex justify-center gap-8 mb-12">
-          <a
-            href="https://github.com/SubhadipCSE"
-            target="_blank"
-            class="text-gray-500 hover:text-[#00ff41] transition-colors"
-          >
-            <span class="text-xl font-bold">[ GitHub ]</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/subhadip-samanta-92aa76325/"
-            target="_blank"
-            class="text-gray-500 hover:text-[#00ff41] transition-colors"
-          >
-            <span class="text-xl font-bold">[ LinkedIn ]</span>
-          </a>
-        </div>
-
-        <div class="text-xs text-gray-600 mt-10">
-          root@server:~# exit <br />
-          Connection to server closed. <br />
-          &copy; 2026 SUBHADIP SAMANTA. ALL RIGHTS SECURED.
         </div>
       </div>
     </footer>
 
+    <!-- Scripts for Matrix Rain and Interactive Terminal -->
     <script>
-      const textToType = "B.Tech Engineering Student | Aspiring Web Developer";
-      const typingElement = document.getElementById("typing-text");
-      let index = 0;
+      // --- 1. Matrix Rain Effect ---
+      const canvas = document.getElementById("matrix-canvas");
+      const ctx = canvas.getContext("2d");
 
-      function type() {
-        if (index < textToType.length) {
-          typingElement.innerHTML += textToType.charAt(index);
-          index++;
-          setTimeout(type, 50); // Speed of typing
-        }
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const katakana =
+        "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン";
+      const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const nums = "0123456789";
+      const alphabet = katakana + latin + nums;
+
+      const fontSize = 16;
+      const columns = canvas.width / fontSize;
+      const drops = [];
+
+      for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
       }
 
-      // Start typing effect after a short delay
-      setTimeout(type, 1000);
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(3, 3, 3, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0ff"; // Cyan matrix
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = alphabet.charAt(
+            Math.floor(Math.random() * alphabet.length),
+          );
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+      setInterval(drawMatrix, 30);
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // --- 2. Interactive Terminal Logic ---
+      const termInput = document.getElementById("term-input");
+      const termOutput = document.getElementById("terminal-output");
+
+      const commands = {
+        help: 'Available commands: <br> - <span class="text-white">whoami</span> (Identity details)<br> - <span class="text-white">skills</span> (View tech stack)<br> - <span class="text-white">contact</span> (Get connection info)<br> - <span class="text-white">clear</span> (Clear terminal screen)',
+        whoami:
+          "Identity: Subhadip Samanta.<br>Status: B.Tech Engineering Student (GCELT, Kolkata).<br>Mission: Full Stack Web Development & System Architecture.",
+        skills:
+          "Primary capabilities: HTML, CSS, Tailwind, JS, Node.js, Express, MongoDB, C Programming.",
+        contact: "Email: noastedlife@gmail.com<br>Phone: +91 8536826782",
+        clear: "clear_screen",
+        sudo: "Access denied. You are not logged in as root. Nice try!",
+      };
+
+      termInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          const cmd = termInput.value.trim().toLowerCase();
+
+          // Echo input
+          const echoDiv = document.createElement("div");
+          echoDiv.innerHTML = `<span class="text-cyan-400">~/guest$</span> ${cmd}`;
+          termOutput.appendChild(echoDiv);
+
+          // Process command
+          if (cmd === "clear") {
+            termOutput.innerHTML = "";
+          } else if (cmd === "") {
+            // Do nothing
+          } else if (commands[cmd]) {
+            const resDiv = document.createElement("div");
+            resDiv.className = "text-gray-300 py-1";
+            resDiv.innerHTML = commands[cmd];
+            termOutput.appendChild(resDiv);
+          } else {
+            const errDiv = document.createElement("div");
+            errDiv.className = "text-red-400";
+            errDiv.innerText = `Command not found: ${cmd}. Type 'help' for available commands.`;
+            termOutput.appendChild(errDiv);
+          }
+
+          // Reset and scroll to bottom
+          termInput.value = "";
+          termOutput.scrollTop = termOutput.scrollHeight;
+        }
+      });
+
+      // Keep focus on input when clicking terminal
+      document
+        .getElementById("terminal-output")
+        .parentElement.addEventListener("click", () => {
+          termInput.focus();
+        });
     </script>
   </body>
 </html>
