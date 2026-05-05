@@ -3,530 +3,322 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subhadip | Premium Developer</title>
+    <title>Subhadip Samanta | Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Premium Font: Plus Jakarta Sans -->
+    <!-- Fonts: Space Grotesk for Headings (bold/techy), Inter for body (clean/readable) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <style>
       body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        color: #1e293b;
-        overflow-x: hidden;
-        background-color: #f8fafc;
+        font-family: "Inter", sans-serif;
+        background-color: #fdfdfc; /* Off-white, easier on eyes than pure white */
+        color: #0f172a;
       }
 
-      /* Animated Mesh Gradient Background */
-      .mesh-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-        background-color: #ffffff;
+      h1,
+      h2,
+      h3,
+      .display-font {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      /* Neo-Brutalist Hard Shadows */
+      .hard-shadow {
+        border: 3px solid #0f172a;
+        box-shadow: 6px 6px 0px 0px #0f172a;
+        transition: all 0.2s ease-in-out;
+      }
+      .hard-shadow:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 4px 4px 0px 0px #0f172a;
+      }
+      .hard-shadow:active {
+        transform: translate(6px, 6px);
+        box-shadow: 0px 0px 0px 0px #0f172a;
+      }
+
+      /* Solid Grid Background */
+      .grid-bg {
+        background-size: 40px 40px;
         background-image:
-          radial-gradient(
-            at 40% 20%,
-            hsla(250, 100%, 74%, 1) 0px,
-            transparent 50%
-          ),
-          radial-gradient(
-            at 80% 0%,
-            hsla(189, 100%, 56%, 0.8) 0px,
-            transparent 50%
-          ),
-          radial-gradient(
-            at 0% 50%,
-            hsla(340, 100%, 76%, 0.8) 0px,
-            transparent 50%
-          ),
-          radial-gradient(
-            at 80% 100%,
-            hsla(242, 100%, 70%, 0.8) 0px,
-            transparent 50%
-          ),
-          radial-gradient(
-            at 0% 100%,
-            hsla(22, 100%, 77%, 1) 0px,
-            transparent 50%
-          );
-        filter: blur(60px);
-        animation: morph 15s ease-in-out infinite alternate;
-        opacity: 0.6;
-      }
-
-      @keyframes morph {
-        0% {
-          transform: scale(1) rotate(0deg);
-        }
-        50% {
-          transform: scale(1.2) rotate(10deg);
-        }
-        100% {
-          transform: scale(1) rotate(-10deg);
-        }
-      }
-
-      /* Floating Animation for Profile Image */
-      .float-anim {
-        animation: float 6s ease-in-out infinite;
-      }
-      @keyframes float {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-15px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
-      }
-
-      /* Frosted Glass Effect (Glassmorphism) */
-      .glass-card {
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-        border-radius: 24px;
-        transition: all 0.4s ease;
-      }
-
-      .glass-card:hover {
-        background: rgba(255, 255, 255, 0.6);
-        transform: translateY(-5px) scale(1.01);
-        box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.12);
-      }
-
-      /* Gradient Text */
-      .text-gradient {
-        background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      /* Custom Gradient Button */
-      .btn-gradient {
-        background: linear-gradient(135deg, #4f46e5 0%, #c026d3 100%);
-        color: white;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px -5px rgba(192, 38, 211, 0.4);
-      }
-      .btn-gradient:hover {
-        box-shadow: 0 15px 25px -5px rgba(192, 38, 211, 0.6);
-        transform: translateY(-2px);
-      }
-
-      /* Hidden scrollbar but scrollable */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
+          linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+          linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
       }
     </style>
   </head>
-  <body class="antialiased">
-    <!-- Dynamic Background -->
-    <div class="mesh-bg"></div>
-
-    <!-- Header -->
-    <header class="fixed top-6 left-0 right-0 z-50 px-4 flex justify-center">
-      <nav
-        class="glass-card px-8 py-4 flex items-center gap-8 rounded-full border border-white/80 font-semibold text-sm text-slate-700"
-      >
-        <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
-        <a href="#about" class="hover:text-indigo-600 transition-colors"
+  <body
+    class="selection:bg-blue-600 selection:text-white border-t-8 border-blue-600 min-h-screen flex flex-col grid-bg"
+  >
+    <!-- Navbar -->
+    <header
+      class="p-6 md:p-8 flex justify-between items-center max-w-6xl mx-auto w-full"
+    >
+      <div class="display-font text-2xl font-bold tracking-tight">
+        SUBHADIP.
+      </div>
+      <nav class="hidden md:flex gap-8 font-medium">
+        <a
+          href="#about"
+          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
           >About</a
         >
-        <a href="#projects" class="hover:text-indigo-600 transition-colors"
-          >Projects</a
+        <a
+          href="#skills"
+          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
+          >Skills</a
         >
-        <a href="#contact" class="hover:text-indigo-600 transition-colors"
-          >Contact</a
+        <a
+          href="#projects"
+          class="hover:underline underline-offset-4 decoration-2 decoration-blue-600"
+          >Work</a
         >
       </nav>
+      <a
+        href="mailto:noastedlife@gmail.com"
+        class="hidden md:inline-block hard-shadow bg-blue-600 text-white px-6 py-2 font-bold display-font text-sm uppercase tracking-wider"
+        >Let's Talk</a
+      >
     </header>
 
     <!-- Hero Section -->
-    <section
-      id="home"
-      class="min-h-screen flex items-center justify-center pt-20 px-4"
+    <main
+      class="flex-grow flex items-center justify-center px-6 md:px-8 py-12 md:py-24"
     >
       <div
-        class="max-w-5xl w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12"
+        class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
       >
-        <!-- Text Content -->
-        <div class="text-center md:text-left flex-1">
+        <!-- Content -->
+        <div class="order-2 md:order-1">
           <div
-            class="inline-block px-4 py-1.5 rounded-full glass-card mb-6 text-sm font-bold text-indigo-600 shadow-sm"
+            class="inline-block border-2 border-black bg-yellow-300 px-3 py-1 font-bold text-xs uppercase tracking-widest mb-6 display-font"
           >
-            👋 Welcome to my portfolio
+            Available for Hire
           </div>
           <h1
-            class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
+            class="text-5xl md:text-7xl font-bold display-font leading-[1.1] mb-6 uppercase"
           >
-            Crafting Digital <br />
-            <span class="text-gradient">Experiences.</span>
+            I write code <br />
+            <span
+              class="text-white text-shadow bg-black px-2 inline-block transform -skew-x-3"
+              >that works.</span
+            >
           </h1>
           <p
-            class="text-lg text-slate-600 mb-8 max-w-lg font-medium leading-relaxed"
+            class="text-lg md:text-xl font-medium text-slate-700 mb-8 max-w-lg border-l-4 border-blue-600 pl-4"
           >
-            I'm Subhadip Samanta. A Full Stack Developer & B.Tech student at
-            GCELT, passionate about building beautiful and scalable web
-            applications.
+            I'm Subhadip Samanta, a Full Stack Developer & B.Tech student from
+            Kolkata. I build fast, accessible, and robust digital solutions.
           </p>
-          <div
-            class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-          >
+          <div class="flex flex-wrap gap-4">
             <a
               href="#projects"
-              class="btn-gradient px-8 py-4 rounded-xl font-bold text-center"
+              class="hard-shadow bg-white text-black px-8 py-3 font-bold display-font uppercase tracking-wide"
             >
-              Explore My Work
+              View Projects
             </a>
             <a
               href="https://github.com/SubhadipCSE"
               target="_blank"
-              class="glass-card px-8 py-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 hover:bg-white/80"
+              class="hard-shadow bg-slate-900 text-white px-8 py-3 font-bold display-font uppercase tracking-wide flex items-center gap-2"
             >
+              GitHub
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
                 />
               </svg>
-              GitHub Profile
             </a>
           </div>
         </div>
 
-        <!-- Profile Image -->
-        <div class="relative w-64 h-64 md:w-80 md:h-80 float-anim">
-          <!-- Decorative background ring -->
+        <!-- Image -->
+        <div class="order-1 md:order-2 flex justify-center md:justify-end">
           <div
-            class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-pink-500 rounded-full blur-2xl opacity-40"
-          ></div>
-          <img
-            src="IMG_20250405_222500~2 (1).jpg"
-            alt="Subhadip Samanta"
-            class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-2xl z-10"
-          />
-
-          <!-- Floating badge -->
-          <div
-            class="absolute -bottom-6 -left-6 glass-card px-4 py-2 rounded-xl font-bold flex items-center gap-2 z-20"
+            class="hard-shadow bg-blue-100 p-2 transform rotate-2 hover:rotate-0 transition-transform duration-300 w-64 h-64 md:w-80 md:h-80 relative"
           >
-            <span class="text-2xl">💻</span> Full Stack Dev
+            <!-- Added grayscale to image for that pro raw look, hover to see color -->
+            <img
+              src="IMG_20250405_222500~2 (1).jpg"
+              alt="Subhadip"
+              class="w-full h-full object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+            />
           </div>
         </div>
       </div>
-    </section>
+    </main>
 
-    <!-- Skills Section -->
-    <section id="about" class="py-24 px-4 max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-extrabold mb-4">My Superpowers</h2>
-        <p class="text-slate-600 max-w-2xl mx-auto">
-          Technologies I use to bring ideas to life on the web.
-        </p>
+    <!-- Skills Marquee Banner (Continuous Line) -->
+    <div
+      id="skills"
+      class="border-y-4 border-black bg-blue-600 text-white overflow-hidden py-3 display-font uppercase tracking-widest font-bold flex whitespace-nowrap"
+    >
+      <div
+        class="animate-[marquee_20s_linear_infinite] flex space-x-8 items-center px-4"
+      >
+        <span>★ HTML/CSS</span> <span>★ JAVASCRIPT</span>
+        <span>★ TAILWIND</span> <span>★ NODE.JS</span> <span>★ EXPRESS.JS</span>
+        <span>★ MONGODB</span> <span>★ C PROGRAMMING</span>
+        <span>★ HTML/CSS</span> <span>★ JAVASCRIPT</span>
+        <span>★ TAILWIND</span> <span>★ NODE.JS</span> <span>★ EXPRESS.JS</span>
+        <span>★ MONGODB</span> <span>★ C PROGRAMMING</span>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Skill Cards -->
-        <div
-          class="glass-card p-6 flex flex-col items-center justify-center gap-3"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            class="w-16 h-16 drop-shadow-md"
-            alt="JS"
-          />
-          <span class="font-bold text-slate-800">JavaScript</span>
-        </div>
-        <div
-          class="glass-card p-6 flex flex-col items-center justify-center gap-3"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-            class="w-16 h-16 drop-shadow-md"
-            alt="Node"
-          />
-          <span class="font-bold text-slate-800">Node.js</span>
-        </div>
-        <div
-          class="glass-card p-6 flex flex-col items-center justify-center gap-3"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-            class="w-16 h-16 drop-shadow-md"
-            alt="MongoDB"
-          />
-          <span class="font-bold text-slate-800">MongoDB</span>
-        </div>
-        <div
-          class="glass-card p-6 flex flex-col items-center justify-center gap-3"
-        >
-          <img
-            src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-            class="w-16 h-16 drop-shadow-md"
-            alt="Tailwind"
-          />
-          <span class="font-bold text-slate-800">Tailwind CSS</span>
-        </div>
-      </div>
-    </section>
+    </div>
+    <style>
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+    </style>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-4 max-w-6xl mx-auto">
-      <div
-        class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+    <section id="projects" class="py-20 px-6 md:px-8 max-w-6xl mx-auto w-full">
+      <h2
+        class="text-4xl md:text-5xl font-bold display-font uppercase mb-12 border-b-4 border-black inline-block pb-2"
       >
-        <div>
-          <h2 class="text-4xl font-extrabold mb-4">Featured Projects</h2>
-          <p class="text-slate-600">
-            Some of my recent works that I'm proud of.
-          </p>
-        </div>
-      </div>
+        Selected Work
+      </h2>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Project 1 -->
-        <div class="glass-card p-8 group relative overflow-hidden">
+        <article class="hard-shadow bg-white p-6 md:p-8 flex flex-col h-full">
           <div
-            class="absolute top-0 right-0 w-32 h-32 bg-indigo-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"
-          ></div>
-          <div class="flex justify-between items-start mb-6 relative z-10">
+            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
+          >
+            <h3 class="text-2xl font-bold display-font uppercase">
+              Patient Registration
+            </h3>
             <span
-              class="px-4 py-1.5 rounded-full bg-white/60 text-indigo-700 text-xs font-bold uppercase tracking-wider"
+              class="bg-blue-100 border-2 border-black px-2 py-1 text-xs font-bold uppercase"
               >Full Stack</span
             >
-            <a
-              href="https://github.com/SubhadipCSE/Doctor-Camp"
-              target="_blank"
-              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-800 hover:bg-indigo-600 hover:text-white transition-colors shadow-sm"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </a>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-slate-800 relative z-10">
-            Patient Registration System
-          </h3>
-          <p class="text-slate-600 mb-6 relative z-10">
-            A robust backend and frontend architecture to manage doctor
-            appointments and patient records using Node.js and MongoDB.
+          <p class="text-slate-700 font-medium mb-8 flex-grow">
+            A complete data management system for doctors and patients built
+            with Node.js, Express, and MongoDB. Secure, fast, and scalable.
           </p>
-        </div>
+          <a
+            href="https://github.com/SubhadipCSE/Doctor-Camp"
+            target="_blank"
+            class="w-full border-2 border-black text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
+          >
+            Source Code <span class="text-xl leading-none">↗</span>
+          </a>
+        </article>
 
         <!-- Project 2 -->
-        <div class="glass-card p-8 group relative overflow-hidden">
+        <article
+          class="hard-shadow bg-yellow-100 p-6 md:p-8 flex flex-col h-full"
+        >
           <div
-            class="absolute top-0 right-0 w-32 h-32 bg-pink-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"
-          ></div>
-          <div class="flex justify-between items-start mb-6 relative z-10">
+            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
+          >
+            <h3 class="text-2xl font-bold display-font uppercase">
+              Web Calling App
+            </h3>
             <span
-              class="px-4 py-1.5 rounded-full bg-white/60 text-pink-700 text-xs font-bold uppercase tracking-wider"
+              class="bg-white border-2 border-black px-2 py-1 text-xs font-bold uppercase"
               >WebRTC</span
             >
-            <a
-              href="https://github.com/SubhadipCSE/Web-Calling-App"
-              target="_blank"
-              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-800 hover:bg-pink-600 hover:text-white transition-colors shadow-sm"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </a>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-slate-800 relative z-10">
-            Real-time Calling App
-          </h3>
-          <p class="text-slate-600 mb-6 relative z-10">
-            High-performance peer-to-peer voice and video communication platform
-            leveraging modern WebRTC protocols.
+          <p class="text-slate-700 font-medium mb-8 flex-grow">
+            Real-time peer-to-peer voice and video communication platform
+            leveraging modern WebRTC protocols to bypass standard network
+            barriers.
           </p>
-        </div>
+          <a
+            href="https://github.com/SubhadipCSE/Web-Calling-App"
+            target="_blank"
+            class="w-full border-2 border-black bg-white text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
+          >
+            Source Code <span class="text-xl leading-none">↗</span>
+          </a>
+        </article>
 
         <!-- Project 3 -->
-        <div class="glass-card p-8 group relative overflow-hidden">
+        <article class="hard-shadow bg-white p-6 md:p-8 flex flex-col h-full">
           <div
-            class="absolute top-0 right-0 w-32 h-32 bg-emerald-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"
-          ></div>
-          <div class="flex justify-between items-start mb-6 relative z-10">
+            class="flex justify-between items-start mb-6 border-b-2 border-black pb-4"
+          >
+            <h3 class="text-2xl font-bold display-font uppercase">
+              Kali Linux Landing
+            </h3>
             <span
-              class="px-4 py-1.5 rounded-full bg-white/60 text-emerald-700 text-xs font-bold uppercase tracking-wider"
-              >Frontend UI</span
+              class="bg-blue-100 border-2 border-black px-2 py-1 text-xs font-bold uppercase"
+              >Frontend</span
             >
-            <a
-              href="https://github.com/SubhadipCSE/Responsive_kali_clone"
-              target="_blank"
-              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-800 hover:bg-emerald-600 hover:text-white transition-colors shadow-sm"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </a>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-slate-800 relative z-10">
-            Kali Linux Landing Page
-          </h3>
-          <p class="text-slate-600 mb-6 relative z-10">
-            A pixel-perfect, fully responsive clone of the official Kali Linux
-            OS website using pure HTML & CSS.
+          <p class="text-slate-700 font-medium mb-8 flex-grow">
+            A pixel-perfect, fully responsive UI clone of the official Kali
+            Linux OS website using pure HTML & CSS. Focuses on exact layout
+            matching.
           </p>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="glass-card p-8 group relative overflow-hidden">
-          <div
-            class="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"
-          ></div>
-          <div class="flex justify-between items-start mb-6 relative z-10">
-            <span
-              class="px-4 py-1.5 rounded-full bg-white/60 text-red-700 text-xs font-bold uppercase tracking-wider"
-              >Frontend UI</span
-            >
-            <a
-              href="https://github.com/SubhadipCSE/Netflix_Colne"
-              target="_blank"
-              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-800 hover:bg-red-600 hover:text-white transition-colors shadow-sm"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </a>
-          </div>
-          <h3 class="text-2xl font-bold mb-3 text-slate-800 relative z-10">
-            Netflix UI Clone
-          </h3>
-          <p class="text-slate-600 mb-6 relative z-10">
-            Static frontend clone of the popular streaming platform Netflix,
-            demonstrating advanced grid and flexbox layouts.
-          </p>
-        </div>
+          <a
+            href="https://github.com/SubhadipCSE/Responsive_kali_clone"
+            target="_blank"
+            class="w-full border-2 border-black text-center py-3 font-bold uppercase hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2"
+          >
+            Source Code <span class="text-xl leading-none">↗</span>
+          </a>
+        </article>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-4 max-w-4xl mx-auto text-center">
-      <div class="glass-card p-12 relative overflow-hidden">
-        <!-- Decorative blobs inside card -->
-        <div
-          class="absolute -top-10 -left-10 w-40 h-40 bg-indigo-400 rounded-full blur-3xl opacity-30"
-        ></div>
-        <div
-          class="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-400 rounded-full blur-3xl opacity-30"
-        ></div>
-
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 relative z-10">
-          Let's build something awesome.
-        </h2>
-        <p class="text-slate-600 mb-10 text-lg relative z-10">
-          Have an exciting project or just want to say hi? My inbox is always
-          open.
-        </p>
-
-        <div
-          class="flex flex-col sm:flex-row justify-center gap-4 relative z-10"
+    <!-- Huge Footer / Contact -->
+    <footer
+      class="mt-10 border-t-4 border-black bg-white pt-16 pb-8 px-6 md:px-8 text-center"
+    >
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-5xl md:text-8xl font-bold display-font uppercase tracking-tighter mb-8"
         >
+          Let's Work.
+        </h2>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16">
           <a
             href="mailto:noastedlife@gmail.com"
-            class="btn-gradient px-8 py-4 rounded-xl font-bold shadow-lg"
+            class="hard-shadow bg-black text-white px-8 py-4 font-bold display-font text-xl uppercase"
           >
-            Send me an Email
+            noastedlife@gmail.com
           </a>
           <a
             href="tel:+918536826782"
-            class="bg-white text-slate-800 px-8 py-4 rounded-xl font-bold shadow-sm hover:shadow-md hover:bg-slate-50 transition-all border border-slate-200"
+            class="hard-shadow bg-white text-black px-8 py-4 font-bold display-font text-xl uppercase"
           >
             +91 8536826782
           </a>
         </div>
 
-        <div class="mt-12 flex justify-center gap-6 relative z-10">
-          <a
-            href="https://github.com/SubhadipCSE"
-            target="_blank"
-            class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-600 hover:text-indigo-600 hover:scale-110 transition-all shadow-sm"
+        <div
+          class="flex justify-center gap-8 border-y-2 border-black py-4 mb-8 font-bold uppercase"
+        >
+          <a href="https://github.com/SubhadipCSE" class="hover:underline"
+            >GitHub</a
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              />
-            </svg>
-          </a>
           <a
             href="https://linkedin.com/in/subhadip-samanta-92aa76325/"
-            target="_blank"
-            class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-600 hover:text-blue-600 hover:scale-110 transition-all shadow-sm"
+            class="hover:underline"
+            >LinkedIn</a
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-              />
-            </svg>
-          </a>
+          <a
+            href="https://www.instagram.com/noastedlife/"
+            class="hover:underline"
+            >Instagram</a
+          >
         </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-8 text-center text-slate-500 font-medium text-sm">
-      <p>
-        &copy; 2026 Subhadip Samanta. Designed with passion and Tailwind CSS.
-      </p>
+        <p class="font-medium text-slate-500 uppercase text-xs">
+          &copy; 2026 Subhadip Samanta. Designed by human, coded by human.
+        </p>
+      </div>
     </footer>
   </body>
 </html>
